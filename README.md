@@ -3,47 +3,59 @@
 
 ```
 <template>
-  <div class="mb-4 navbar">
-    <div class="d-flex justify-space-between align-center">
-      <NavbarLogo />
-      <NavbarMenu :menuItems="menuItems" :activeTag="$route.meta.navTag" />
-      <v-spacer />
-      <SearchBar
-        v-if="!searchClosed"
-        v-model="searchText"
-        @blur="searchClosed = true"
-      />
-      <ProfileButton class="profile-btn" />
+  <div class="navbar-container">
+    <div class="navbar-content">
+      <div class="navbar-column logo-column">
+        <NavbarLogo />
+      </div>
+      <div class="navbar-column nav-items-column">
+        <NavbarMenu :menuItems="menuItems" :activeTag="$route.meta.navTag" />
+      </div>
+      <div class="navbar-column profile-button-column">
+        <ProfileButton />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// ... existing script block
+// ... existing script content
 </script>
 
 <style scoped>
-.navbar {
-  padding: 0 16px; /* Adjust padding as necessary for your design */
+.navbar-container {
+  display: flex;
+  align-items: center; /* This centers the navbar content vertically */
+  justify-content: space-between; /* This spreads out the logo, nav items, and profile button */
 }
 
-/* Aligning the profile button to the center */
-.profile-btn {
-  margin-left: auto; /* Pushes the button to the right */
-  align-self: center; /* Vertically centers the button */
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-/* Navbar Menu */
-.nav-menu {
-  margin-bottom: 0; /* Reducing bottom margin for the nav items */
+.navbar-column {
+  display: flex;
+  align-items: flex-end; /* Aligns items to the bottom */
 }
 
-/* If there is a specific class or element for the nav items within NavbarMenu, you may need to adjust their padding directly */
-.nav-item {
-  padding-bottom: 0; /* Example: Reducing padding at the bottom of each nav item */
+.logo-column {
+  /* Logo column styles */
 }
+
+.nav-items-column {
+  flex-grow: 1; /* Allows this column to take up the available space */
+  /* Additional styles to position the nav items */
+}
+
+.profile-button-column {
+  display: flex;
+  align-items: center; /* This will vertically center the profile button */
+  justify-content: flex-end; /* Aligns the profile button to the right */
+}
+
+/* You might need to add additional styles or adjust the existing ones based on your design */
 </style>
-
-
 
 ```
